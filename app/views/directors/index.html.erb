@@ -1,0 +1,52 @@
+<a href="/movies">Go to Movies</a>
+<a href="/actors">Go to Actors</a>
+<a href="/directors">Go to Directors</a>
+
+<div class="page-header">
+  <h1>Directors</h1>
+</div>
+<p><a href="/directors/new_form" class="btn btn-primary">Add a New Director</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Bio</th>
+
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@directors.each do |director| %>
+    <tr>
+      <td><img src="<%=director.image_url %>" width="90"/></td>
+      <td><%= director.name %></td>
+      <td><%= director.dob %></td>
+      <td><%= truncate(director.bio) %></td>
+      <td>
+        <a href="/directors/<%= director.id %>" class="btn btn-primary">
+          Show
+        </a>
+      </td>
+      <td>
+        <a href="/director/<%= director.id %>/edit_form" class="btn btn-warning">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a href="/delete_director/<%= director.id %>" class="btn btn-danger">
+          Delete
+        </a>
+      </td>
+    </tr>
+
+    <% end %>
+
+
+  </tbody>
+</table>
